@@ -65,6 +65,8 @@ def process_email(email):
     email = email.replace('\n', ' ')
     email = email.replace('\t', ' ')
     email = re.sub(r'\ +', ' ', email)
+    # remove words with more than 44 characters
+    email = re.sub(r'\b\w{30,}\b', '', email)
 
     mega_string = ''
 
@@ -77,7 +79,7 @@ def process_email(email):
             continue
         mega_string += token + ' '
         #print(token)
-    return mega_string
+    return mega_string.split()
 
 
 if __name__ == '__main__':
@@ -89,7 +91,7 @@ if __name__ == '__main__':
     print(sample_email)
 
     sample_email = process_email(sample_email)
-    #print(sample_email)
+    print(sample_email)
 
     """ file.close()
     # save the preprocessed email

@@ -8,7 +8,8 @@ if __name__ == '__main__':
     spam_dir = './datasets/20021010_spam/spam/'
     spam_files = os.listdir(spam_dir)
 
-    mega_string = ''
+    mega_string_list = []
+    not_readable = 0
 
     for file in spam_files:
         print(file)
@@ -24,13 +25,19 @@ if __name__ == '__main__':
             file_email = open(spam_dir + file, 'r', encoding=encoding)
             email = file_email.read()
             email = process_email(email)
-            mega_string += ' '.join(email) + ' '
+            mega_string_list.extend(email)
             file_email.close()
         except:
             print('Error processing file: ' + file)
-    
-    word_count = Counter(mega_string)
+            not_readable += 1
+    print(f'Number of files not readable: {not_readable}')
+    print(f'Number of files successfully read: {len(spam_files) - not_readable}')
 
-    x = 100
+    #print(mega_string_list)
+    #words = mega_string.split()
+    #print(words)
+    word_count = Counter(mega_string_list)
+
+    x = 8791
     most_common_words = word_count.most_common(x)
     print(most_common_words)

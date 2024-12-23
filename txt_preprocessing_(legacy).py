@@ -3,6 +3,12 @@ from nltk.stem.snowball import SnowballStemmer
 from string import punctuation
 from collections import Counter
 
+################################################################################
+#     Legacy preprocessing code, before knowing the email packages exists      #
+#     This code still includes lots of html stuff and has been abandoned       #
+################################################################################
+
+
 # remove html tags
 def remove_html_tags(text):
     clean = re.compile('<.*?>')

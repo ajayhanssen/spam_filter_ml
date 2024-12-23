@@ -10,7 +10,10 @@ from string import punctuation
 #      (the jupyter notebook is also more commented than this file)            #
 ################################################################################
 
+
 class EmailPreprocessor:
+
+
     def __init__(self):
         pass
 
@@ -18,7 +21,7 @@ class EmailPreprocessor:
         with open(file_path, 'rb') as file:
             # Parse the email using the default policy
             email_message = BytesParser(policy=policy.default).parse(file)
-        
+
         # Extract headers
         subject = email_message.get('Subject', '(No Subject)')
         sender = email_message.get('From', '(Unknown Sender)')
@@ -28,7 +31,7 @@ class EmailPreprocessor:
         body = ""
         if email_message.get_body(preferencelist=('plain', 'html')):
             body_content = email_message.get_body(preferencelist=('plain', 'html'))
-            body = body_content.get_content()  # Automatically decodes and gets the content
+            body = body_content.get_content()
         
         return {
             "Subject": subject,

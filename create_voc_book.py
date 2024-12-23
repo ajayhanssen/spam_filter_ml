@@ -3,6 +3,12 @@ from txt_preprocessing import *
 from collections import Counter
 import chardet
 
+#################################################################################
+# Before finding out about sklearn's TfidfVectorizer, I tried counting manually #
+#                   This code is therefore now useless                          #
+#                   (was not good in the first place)                           #
+#################################################################################
+
 if __name__ == '__main__':
     # iterate through all files in the spam folder
     spam_dir = './datasets/20021010_spam/spam/'

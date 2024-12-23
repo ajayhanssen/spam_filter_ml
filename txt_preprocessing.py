@@ -35,6 +35,10 @@ def change_www(text):
 def change_numbers(text):
     return re.sub(r'\b\d+\b', 'number', text)
 
+def change_percent(text):
+    text = re.sub(r'\%\d+', 'percent', text)
+    return re.sub(r'\b\d+\%\b', 'percent', text)
+
 def replace_multiple_numbers(text):
     # change numbernumber+ to number
     return re.sub(r'(number)+', 'number', text)
@@ -46,6 +50,7 @@ def preprocess_text(text):
     text = change_time(text)
     text = change_ip(text)
     text = change_dollar(text)
+    text = change_percent(text)
     text = change_www(text)
     text = change_numbers(text)
     text = text.lower()
@@ -78,9 +83,10 @@ def process_email(email):
 if __name__ == '__main__':
     # load sample email
     #file = open('./datasets/20021010_easy_ham/easy_ham/0001.ea7e79d3153e7469e7a9c3e0af6a357e', 'r')
-    file = open('./datasets/20021010_spam/spam/0486.348918a564335556b4fdd8b82f939918', 'r')
+    file = open('./datasets/20021010_spam/spam/0100.c60d1c697136b07c947fa180ba3e0441', 'r')
 
     sample_email = file.read()
+    print(sample_email)
 
     sample_email = process_email(sample_email)
     #print(sample_email)

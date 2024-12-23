@@ -1,6 +1,7 @@
 import os
 from txt_preprocessing import *
 from collections import Counter
+import chardet
 
 if __name__ == '__main__':
     # iterate through all files in the spam folder
@@ -8,12 +9,25 @@ if __name__ == '__main__':
     spam_files = os.listdir(spam_dir)
 
     mega_string = ''
+
     for file in spam_files:
-        file = open(spam_dir + file, 'r')
-        email = file.read()
-        email = process_email(email)
-        mega_string += ' '.join(email) + ' '
-        file.close()
+        print(file)
+
+        try:
+            file_email = open(spam_dir + file, 'rb')
+            raw_data = file_email.read(10000)  # Read a portion of the file
+            result = chardet.detect(raw_data)
+            encoding = result['encoding']
+            file_email.close()
+
+
+            file_email = open(spam_dir + file, 'r', encoding=encoding)
+            email = file_email.read()
+            email = process_email(email)
+            mega_string += ' '.join(email) + ' '
+            file_email.close()
+        except:
+            print('Error processing file: ' + file)
     
     word_count = Counter(mega_string)
 

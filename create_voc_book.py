@@ -21,7 +21,6 @@ if __name__ == '__main__':
             encoding = result['encoding']
             file_email.close()
 
-
             file_email = open(spam_dir + file, 'r', encoding=encoding)
             email = file_email.read()
             email = process_email(email)
@@ -38,6 +37,7 @@ if __name__ == '__main__':
     #print(words)
     word_count = Counter(mega_string_list)
 
-    x = 8791
+    x = 10000
     most_common_words = word_count.most_common(x)
     print(most_common_words)
+    print(f'Number of unique words: {len(word_count)}')

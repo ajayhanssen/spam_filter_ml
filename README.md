@@ -9,11 +9,11 @@ install requirements using
 ~~~
 pip install -r reqirements.txt
 ~~~
-The main file is the jupyter notebook
+The main file is the jupyter notebook, all the other files are no longer needed.
 ~~~
 spam_filter.ipynb
 ~~~
-Please look at markdown sections and comments in this file for detailed explanations on what is happening in the code.
+Please have a look at the markdown sections and comments in this file for detailed explanations on what is happening in the code.
 
 ---
 
@@ -21,3 +21,7 @@ The classifiers that have been tried are:
 - Multinomial Naive Bayes
 - Support Vector Machine
 - Random Forest Classifier
+
+---
+
+Dataset used: [SpamAssassin public mail corpus](https://spamassassin.apache.org/old/publiccorpus/)

@@ -25,3 +25,5 @@ The classifiers that have been tried are:
 ---
 
 Dataset used: [SpamAssassin public mail corpus](https://spamassassin.apache.org/old/publiccorpus/)
+
+Only the most recent iterations of the given subset was used in this project due to duplicates.
